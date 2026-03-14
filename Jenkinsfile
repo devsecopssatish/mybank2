@@ -24,10 +24,11 @@ pipeline {
         } //end snyk sca
 
 
-        environment {
+
+		stage('snyk Scanning - sast') {
+			        environment {
 	    	SNYK_TOKEN = credentials('SNYK_TOKEN')
 	    }
-		stage('snyk Scanning - sast') {
             steps {
 		
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
