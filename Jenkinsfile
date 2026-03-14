@@ -4,7 +4,7 @@ pipeline {
         stage('Secrest scanning') {
             steps {
                 sh """
-                    echo "This is secrets scanning"
+                   gitleaks detect . -v --redact -f json -r secrets-scanning-report.json
                 """
             }
         } //end secrets scanning
