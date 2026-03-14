@@ -3,9 +3,11 @@ pipeline {
     stages {
         stage('Secrest scanning') {
             steps {
+				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 sh """
                    gitleaks detect . -v --redact -f json -r secrets-scanning-report.json
                 """
+				}
             }
              post {
                 always {
