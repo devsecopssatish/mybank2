@@ -7,6 +7,12 @@ pipeline {
                    gitleaks detect . -v --redact -f json -r secrets-scanning-report.json
                 """
             }
+             post {
+                always {
+                    archiveArtifacts artifacts: "secrets-scanning-report.json" , allowEmptyArchive: true
+                }
+            }
+
         } //end secrets scanning
 
         stage('Trivy SCA') {
