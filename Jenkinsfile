@@ -9,7 +9,7 @@ pipeline {
             }
         } //end secrets scanning
 
-        stage('Snyk SCA') {
+        stage('Trivy SCA') {
             steps {
                 sh """
                     echo "This is SCA"
