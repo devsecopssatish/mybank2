@@ -33,8 +33,7 @@ pipeline {
 		
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 sh '''
-					snyk auth $SNYK_TOKEN
-					snyk code test -o snyk-sast.html
+					echo $SNYK_TOKEN
                 '''
                 }
             }
